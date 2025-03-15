@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,6 +19,9 @@ import {
   GridType
 } from 'angular-gridster2';
 import { MarkdownModule } from 'ngx-markdown';
+import { WidgetAComponent } from './widgetA.component';
+import { WidgetBComponent } from './widgetB.component';
+import { WidgetCComponent } from './widgetC.component';
 
 @Component({
   selector: 'app-compact',
@@ -25,6 +29,7 @@ import { MarkdownModule } from 'ngx-markdown';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   imports: [
+    CommonModule,
     FormsModule,
     MatButtonModule,
     MatIconModule,
@@ -36,7 +41,12 @@ import { MarkdownModule } from 'ngx-markdown';
 })
 export class DynamicWidgets2Component implements OnInit {
   options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
+  static dashboard: Array<GridsterItem>;
+
+  get DynamicWidgets2Component() {
+    return DynamicWidgets2Component;
+  }
+
 
   ngOnInit(): void {
     this.options = {
@@ -61,7 +71,7 @@ export class DynamicWidgets2Component implements OnInit {
       disableScrollVertical: true,
     };
 
-    this.dashboard = [
+    DynamicWidgets2Component.dashboard = [
 
     ];
   }
@@ -75,10 +85,24 @@ export class DynamicWidgets2Component implements OnInit {
   removeItem($event: MouseEvent | TouchEvent, item): void {
     $event.preventDefault();
     $event.stopPropagation();
-    this.dashboard.splice(this.dashboard.indexOf(item), 1);
+    DynamicWidgets2Component.dashboard.splice(DynamicWidgets2Component.dashboard.indexOf(item), 1);
   }
 
   addItem(): void {
-    this.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10 });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetAComponent, type: 'widgetA'  });
   }
+
+  addWidgetA(): void {
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetAComponent, type: 'widgetA'  });
+  }
+
+  addWidgetB(): void {
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetBComponent, type: 'widgetB'  });
+  }
+
+  addWidgetC(): void {
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetCComponent, type: 'widgetC'  });
+  }
+
+
 }
