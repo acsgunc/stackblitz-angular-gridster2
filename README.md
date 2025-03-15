@@ -1,3 +1,7 @@
+# stackblitz-angular-gridster2
+
+[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/acsgunc/stackblitz-angular-gridster2)
+
 # angular-gridster2
 
 [![npm version](https://badge.fury.io/js/angular-gridster2.svg)](https://badge.fury.io/js/angular-gridster2)
