@@ -40,31 +40,29 @@ export class DynamicWidgets2Component implements OnInit {
 
   ngOnInit(): void {
     this.options = {
-      gridType: GridType.Fit,
-      compactType: CompactType.None,
-      maxCols: 10,
-      maxRows: 10,
+      gridType: GridType.VerticalFixed,
+      compactType: CompactType.CompactUp,
+      minCols: 0,
+      minRows: 0,
+      maxCols: 1,
+      maxRows: 10000000,
+      fixedRowHeight: 1,
+      outerMarginRight: undefined,
       pushItems: true,
       draggable: {
         enabled: true
       },
       resizable: {
         enabled: true
-      }
+      },
+      directionLockIgnoreAxes: ['x'],
+      displayGrid: 'none',
+      disableScrollHorizontal: true,
+      disableScrollVertical: true,
     };
 
     this.dashboard = [
-      { cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 2, y: 0, x: 2 },
-      { cols: 1, rows: 1, y: 0, x: 4 },
-      { cols: 3, rows: 2, y: 1, x: 4 },
-      { cols: 1, rows: 1, y: 4, x: 5 },
-      { cols: 1, rows: 1, y: 2, x: 1 },
-      { cols: 2, rows: 2, y: 5, x: 5 },
-      { cols: 2, rows: 2, y: 3, x: 2 },
-      { cols: 2, rows: 1, y: 2, x: 2 },
-      { cols: 1, rows: 1, y: 3, x: 4 },
-      { cols: 1, rows: 1, y: 0, x: 6 }
+
     ];
   }
 
@@ -81,6 +79,6 @@ export class DynamicWidgets2Component implements OnInit {
   }
 
   addItem(): void {
-    this.dashboard.push({ x: 0, y: 0, cols: 1, rows: 1 });
+    this.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10 });
   }
 }
