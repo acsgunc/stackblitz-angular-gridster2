@@ -18,6 +18,7 @@ import { ResizeComponent } from './sections/resize/resize.component';
 import { RtlComponent } from './sections/rtl/rtl.component';
 import { SwapComponent } from './sections/swap/swap.component';
 import { TrackByComponent } from './sections/trackBy/trackBy.component';
+import { DynamicWidgets2Component } from './sections/dynamicWidgets2/dynamic-widgets2.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const appRoutes: Routes = [
   { path: 'displayGrid', component: DisplayGridComponent },
   { path: 'drag', component: DragComponent },
   { path: 'dynamicWidgets', component: DynamicWidgetsComponent },
+  { path: 'dynamicWidgets2', component: DynamicWidgets2Component },
   { path: 'emptyCell', component: EmptyCellComponent },
   { path: 'gridEvents', component: GridEventsComponent },
   { path: 'gridMargins', component: GridMarginsComponent },
