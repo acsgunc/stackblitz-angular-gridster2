@@ -62,10 +62,31 @@ export class DynamicWidgets2Component implements OnInit {
       outerMarginRight: undefined,
       pushItems: true,
       draggable: {
-        enabled: true
+        delayStart: 0,
+        enabled: true,
+        ignoreContentClass: 'gridster-item-content',
+        ignoreContent: false,
+        dragHandleClass: 'drag-handler',
+        stop: this.eventStop.bind(this),
+        start: this.eventStart.bind(this),
+        dropOverItems: false,
+        dropOverItemsCallback: this.overlapEvent.bind(this),
       },
       resizable: {
-        enabled: true
+        delayStart: 0,
+        enabled: true,
+        start: this.eventStart.bind(this),
+        stop: this.eventStop.bind(this),
+        handles: {
+          s: true,
+          e: true,
+          n: true,
+          w: true,
+          se: true,
+          ne: true,
+          sw: true,
+          nw: true
+        }
       },
       directionLockIgnoreAxes: ['x'],
       displayGrid: 'none',
@@ -79,6 +100,7 @@ export class DynamicWidgets2Component implements OnInit {
       itemInitCallback: this.itemInit.bind(this), 
       itemRemovedCallback: this.itemRemoved.bind(this), 
       itemValidateCallback: this.itemValidate.bind(this), 
+
     
       
     };
@@ -190,6 +212,45 @@ export class DynamicWidgets2Component implements OnInit {
     return item.cols > 0 && item.rows > 0;
   }
 
+ eventStop(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface,
+    event: MouseEvent
+  ): void {
+    console.info('eventStop', item, itemComponent, event, this.grid);
+  }
+
+   eventStart(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface,
+    event: MouseEvent
+  ): void {
+    console.info('eventStart', item, itemComponent, event, this.grid);
+  }
+
+ eventStartDrag(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface,
+    event: MouseEvent
+  ): void {
+    console.info('eventStartDrag', item, itemComponent, event);
+  }
+
+   eventStopDrag(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface,
+    event: MouseEvent
+  ): void {
+    console.info('eventStopDrag', item, itemComponent, event);
+  }
+
+   overlapEvent(
+    source: GridsterItem,
+    target: GridsterItem,
+    grid: GridsterComponent
+  ): void {
+    console.log('overlap', source, target, grid);
+  }
  
 
  gridDestroy(grid: GridsterComponentInterface): void {
