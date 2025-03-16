@@ -179,15 +179,16 @@ export class DynamicWidgets2Component implements OnInit {
   }
 
   resizeWidgetA(): void {
-    let widgetA = DynamicWidgets2Component.dashboard.find(item => item.type == Dw2Const.widgetA);
-    if(!widgetA)
-      return;
-console.log('resizeWidgetA', widgetA);
+    let widgetA = DynamicWidgets2Component.dashboard.find(
+      (item) => item.type == Dw2Const.widgetA
+    );
+    if (!widgetA) return;
+    console.log('resizeWidgetA', widgetA);
     widgetA.gridsterItem.resize?.setItemHeight(500);
+
     // setTimeout(() => {
     //   this.changedOptions();
     // }, 0);
-
   }
 
   createSpaceAtTop(heightInRows: number) {
