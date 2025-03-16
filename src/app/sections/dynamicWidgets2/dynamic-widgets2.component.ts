@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {
   CompactType,
   GridsterComponent,
+  GridsterComponentInterface,
   GridsterConfig,
   GridsterItem,
   GridsterItemComponent,
@@ -69,7 +70,12 @@ export class DynamicWidgets2Component implements OnInit {
       displayGrid: 'none',
       disableScrollHorizontal: true,
       disableScrollVertical: true,
+      initCallback: this.gridInit.bind(this), 
+    
+      
     };
+
+   // this.options.initCallback = this.gridInit.bind(this);
 
     DynamicWidgets2Component.dashboard = [
 
@@ -94,14 +100,26 @@ export class DynamicWidgets2Component implements OnInit {
 
   addWidgetA(): void {
     DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
+    console.log('grid', this.grid);
   }
 
   addWidgetB(): void {
     DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 15, component:WidgetB2Component, type: 'widgetB'  });
+    console.log('grid', this.grid);
   }
 
   addWidgetC(): void {
     DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 20, component:WidgetC2Component, type: 'widgetC'  });
+    console.log('grid', this.grid);
+  }
+
+  grid: GridsterComponentInterface;
+
+   gridInit(grid: GridsterComponentInterface): void {
+    this.grid = grid;
+    console.log('gridInit', this.grid);
+    console.log(this);
+
   }
 
 
