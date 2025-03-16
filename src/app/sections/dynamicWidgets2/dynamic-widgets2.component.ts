@@ -38,8 +38,8 @@ import { WidgetC2Component } from './widgetC2.component';
     MatSelectModule,
     MarkdownModule,
     GridsterComponent,
-    GridsterItemComponent
-  ]
+    GridsterItemComponent,
+  ],
 })
 export class DynamicWidgets2Component implements OnInit {
   options: GridsterConfig;
@@ -48,7 +48,6 @@ export class DynamicWidgets2Component implements OnInit {
   get DynamicWidgets2Component() {
     return DynamicWidgets2Component;
   }
-
 
   ngOnInit(): void {
     this.options = {
@@ -85,31 +84,26 @@ export class DynamicWidgets2Component implements OnInit {
           se: true,
           ne: true,
           sw: true,
-          nw: true
-        }
+          nw: true,
+        },
       },
       directionLockIgnoreAxes: ['x'],
       displayGrid: 'none',
       disableScrollHorizontal: true,
       disableScrollVertical: true,
-      initCallback: this.gridInit.bind(this), 
-      destroyCallback: this.gridDestroy.bind(this), 
-      gridSizeChangedCallback: this.gridSizeChanged.bind(this), 
-      itemChangeCallback: this.itemChange.bind(this), 
-      itemResizeCallback: this.itemResize.bind(this), 
-      itemInitCallback: this.itemInit.bind(this), 
-      itemRemovedCallback: this.itemRemoved.bind(this), 
-      itemValidateCallback: this.itemValidate.bind(this), 
-
-    
-      
+      initCallback: this.gridInit.bind(this),
+      destroyCallback: this.gridDestroy.bind(this),
+      gridSizeChangedCallback: this.gridSizeChanged.bind(this),
+      itemChangeCallback: this.itemChange.bind(this),
+      itemResizeCallback: this.itemResize.bind(this),
+      itemInitCallback: this.itemInit.bind(this),
+      itemRemovedCallback: this.itemRemoved.bind(this),
+      itemValidateCallback: this.itemValidate.bind(this),
     };
 
-   // this.options.initCallback = this.gridInit.bind(this);
+    // this.options.initCallback = this.gridInit.bind(this);
 
-    DynamicWidgets2Component.dashboard = [
-
-    ];
+    DynamicWidgets2Component.dashboard = [];
   }
 
   changedOptions(): void {
@@ -121,98 +115,118 @@ export class DynamicWidgets2Component implements OnInit {
   removeItem($event: MouseEvent | TouchEvent, item): void {
     $event.preventDefault();
     $event.stopPropagation();
-    DynamicWidgets2Component.dashboard.splice(DynamicWidgets2Component.dashboard.indexOf(item), 1);
+    DynamicWidgets2Component.dashboard.splice(
+      DynamicWidgets2Component.dashboard.indexOf(item),
+      1
+    );
   }
 
   addItem(): void {
-   // DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
+    // DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
   }
 
   addWidgetA(): void {
-    let widget = { x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  };
+    let widget = {
+      x: 0,
+      y: 0,
+      cols: 1,
+      rows: 10,
+      component: WidgetA2Component,
+      type: 'widgetA',
+    };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
-   // this.options.compactType = CompactType.CompactUp;
+    // this.options.compactType = CompactType.CompactUp;
     this.changedOptions();
     console.log('grid', this.grid);
   }
 
   addWidgetB(): void {
-    let widget = { x: 0, y: 0, cols: 1, rows: 15, component:WidgetB2Component, type: 'widgetB'  };
+    let widget = {
+      x: 0,
+      y: 0,
+      cols: 1,
+      rows: 15,
+      component: WidgetB2Component,
+      type: 'widgetB',
+    };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
-   // this.options.compactType = CompactType.CompactUp;
+    // this.options.compactType = CompactType.CompactUp;
     this.changedOptions();
     console.log('grid', this.grid);
   }
 
   addWidgetC(): void {
-    let widget = { x: 0, y: 0, cols: 1, rows: 20, component:WidgetC2Component, type: 'widgetC'  };
+    let widget = {
+      x: 0,
+      y: 0,
+      cols: 1,
+      rows: 20,
+      component: WidgetC2Component,
+      type: 'widgetC',
+    };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
-   // this.options.compactType = CompactType.CompactUp;
+    // this.options.compactType = CompactType.CompactUp;
     this.changedOptions();
- 
+
     console.log('grid', this.grid);
   }
 
-  createSpaceAtTop(heightInRows:number) {
+  createSpaceAtTop(heightInRows: number) {
     this.options.compactType = CompactType.None;
-    for(let item of DynamicWidgets2Component.dashboard)
-    {
+    for (let item of DynamicWidgets2Component.dashboard) {
       item.y += heightInRows;
     }
 
- this.changedOptions();
-
+    this.changedOptions();
   }
-  
 
   grid: GridsterComponentInterface;
 
-   gridInit(grid: GridsterComponentInterface): void {
+  gridInit(grid: GridsterComponentInterface): void {
     this.grid = grid;
     console.log('gridInit', this.grid);
     console.log(this);
-
   }
 
-   itemChange(
+  itemChange(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
   ): void {
     console.info('itemChanged', item, itemComponent, this.grid.grid);
-    console.info('dashboard',  DynamicWidgets2Component.dashboard);
+    console.info('dashboard', DynamicWidgets2Component.dashboard);
   }
 
-   itemResize(
+  itemResize(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
   ): void {
     console.info('itemResized', item, itemComponent);
   }
 
-   itemInit(
+  itemInit(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
   ): void {
-       this.options.compactType = CompactType.CompactUp;
-       this.changedOptions();
+    this.options.compactType = CompactType.CompactUp;
+    this.changedOptions();
     console.info('itemInitialized', item, itemComponent);
   }
 
-   itemRemoved(
+  itemRemoved(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
   ): void {
     console.info('itemRemoved', item, itemComponent);
   }
 
-   itemValidate(item: GridsterItem): boolean {
+  itemValidate(item: GridsterItem): boolean {
     return item.cols > 0 && item.rows > 0;
   }
 
- eventStop(
+  eventStop(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface,
     event: MouseEvent
@@ -220,7 +234,7 @@ export class DynamicWidgets2Component implements OnInit {
     console.info('eventStop', item, itemComponent, event, this.grid);
   }
 
-   eventStart(
+  eventStart(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface,
     event: MouseEvent
@@ -228,7 +242,7 @@ export class DynamicWidgets2Component implements OnInit {
     console.info('eventStart', item, itemComponent, event, this.grid);
   }
 
- eventStartDrag(
+  eventStartDrag(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface,
     event: MouseEvent
@@ -236,7 +250,7 @@ export class DynamicWidgets2Component implements OnInit {
     console.info('eventStartDrag', item, itemComponent, event);
   }
 
-   eventStopDrag(
+  eventStopDrag(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface,
     event: MouseEvent
@@ -244,22 +258,19 @@ export class DynamicWidgets2Component implements OnInit {
     console.info('eventStopDrag', item, itemComponent, event);
   }
 
-   overlapEvent(
+  overlapEvent(
     source: GridsterItem,
     target: GridsterItem,
     grid: GridsterComponent
   ): void {
     console.log('overlap', source, target, grid);
   }
- 
 
- gridDestroy(grid: GridsterComponentInterface): void {
+  gridDestroy(grid: GridsterComponentInterface): void {
     console.info('gridDestroy', grid);
   }
 
- gridSizeChanged(grid: GridsterComponentInterface): void {
+  gridSizeChanged(grid: GridsterComponentInterface): void {
     console.info('gridSizeChanged', grid);
   }
-
-
 }
