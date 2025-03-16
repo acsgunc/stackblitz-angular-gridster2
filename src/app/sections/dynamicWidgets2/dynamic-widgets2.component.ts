@@ -19,9 +19,9 @@ import {
   GridType
 } from 'angular-gridster2';
 import { MarkdownModule } from 'ngx-markdown';
-import { WidgetAComponent } from './widgetA.component';
-import { WidgetBComponent } from './widgetB.component';
-import { WidgetCComponent } from './widgetC.component';
+import { WidgetA2Component } from './widgetA2.component';
+import { WidgetB2Component } from './widgetB2.component';
+import { WidgetC2Component } from './widgetC2.component';
 
 @Component({
   selector: 'app-compact',
@@ -89,19 +89,19 @@ export class DynamicWidgets2Component implements OnInit {
   }
 
   addItem(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetAComponent, type: 'widgetA'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
   }
 
   addWidgetA(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetAComponent, type: 'widgetA'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
   }
 
   addWidgetB(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetBComponent, type: 'widgetB'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetB2Component, type: 'widgetB'  });
   }
 
   addWidgetC(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetCComponent, type: 'widgetC'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetC2Component, type: 'widgetC'  });
   }
 
 

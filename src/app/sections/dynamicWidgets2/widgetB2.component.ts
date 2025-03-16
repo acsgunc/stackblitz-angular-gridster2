@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
 import { DynamicWidgets2Component } from './dynamic-widgets2.component';
 
 @Component({
-  selector: 'app-widget-b',
+  selector: 'app-widget-b2',
   template: `{{item.type}}       <div class="button-holder">
   <button
     mat-mini-fab
@@ -40,7 +40,7 @@ import { DynamicWidgets2Component } from './dynamic-widgets2.component';
   ],
   standalone: true
 })
-export class WidgetBComponent implements OnInit, OnDestroy {
+export class WidgetB2Component implements OnInit, OnDestroy {
   @Input()
   item;
 

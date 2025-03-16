@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
-  selector: 'app-widget-a',
+  selector: 'app-widget-a2',
   template: `{{item.type}}       <div class="button-holder">
   <button
     mat-mini-fab
@@ -40,7 +40,7 @@ import { MarkdownModule } from 'ngx-markdown';
   ],
   standalone: true
 })
-export class WidgetAComponent implements OnInit, OnDestroy {
+export class WidgetA2Component implements OnInit, OnDestroy {
   @Input()
   item;
   
