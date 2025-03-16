@@ -24,6 +24,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { WidgetA2Component } from './widgetA2.component';
 import { WidgetB2Component } from './widgetB2.component';
 import { WidgetC2Component } from './widgetC2.component';
+import { Dw2Const } from './common/dynamic-widgets2.const';
 
 @Component({
   selector: 'app-compact',
@@ -124,7 +125,7 @@ export class DynamicWidgets2Component implements OnInit {
   addItem(): void {
     // DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
   }
-
+  static counter: number = 0;
   addWidgetA(): void {
     let widget = {
       x: 0,
@@ -132,7 +133,8 @@ export class DynamicWidgets2Component implements OnInit {
       cols: 1,
       rows: 10,
       component: WidgetA2Component,
-      type: 'widgetA',
+      type: Dw2Const.widgetA,
+      id: ++DynamicWidgets2Component.counter,
     };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
@@ -148,7 +150,8 @@ export class DynamicWidgets2Component implements OnInit {
       cols: 1,
       rows: 15,
       component: WidgetB2Component,
-      type: 'widgetB',
+      type: Dw2Const.widgetB,
+      id: ++DynamicWidgets2Component.counter,
     };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
@@ -164,7 +167,8 @@ export class DynamicWidgets2Component implements OnInit {
       cols: 1,
       rows: 20,
       component: WidgetC2Component,
-      type: 'widgetC',
+      type: Dw2Const.widgetC,
+      id: ++DynamicWidgets2Component.counter,
     };
     this.createSpaceAtTop(widget.rows);
     DynamicWidgets2Component.dashboard.push(widget);
@@ -172,6 +176,18 @@ export class DynamicWidgets2Component implements OnInit {
     this.changedOptions();
 
     console.log('grid', this.grid);
+  }
+
+  resizeWidgetA(): void {
+    let widgetA = DynamicWidgets2Component.dashboard.find(item => item.type == Dw2Const.widgetA);
+    if(!widgetA)
+      return;
+console.log('resizeWidgetA', widgetA);
+    widgetA.gridsterItem.resize?.setItemHeight(500);
+    // setTimeout(() => {
+    //   this.changedOptions();
+    // }, 0);
+
   }
 
   createSpaceAtTop(heightInRows: number) {
@@ -191,6 +207,16 @@ export class DynamicWidgets2Component implements OnInit {
     console.log(this);
   }
 
+  itemInit(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface
+  ): void {
+    item.gridsterItem = itemComponent;
+    this.options.compactType = CompactType.CompactUp;
+    this.changedOptions();
+    console.info('itemInitialized', item, itemComponent);
+  }
+
   itemChange(
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
@@ -204,15 +230,6 @@ export class DynamicWidgets2Component implements OnInit {
     itemComponent: GridsterItemComponentInterface
   ): void {
     console.info('itemResized', item, itemComponent);
-  }
-
-  itemInit(
-    item: GridsterItem,
-    itemComponent: GridsterItemComponentInterface
-  ): void {
-    this.options.compactType = CompactType.CompactUp;
-    this.changedOptions();
-    console.info('itemInitialized', item, itemComponent);
   }
 
   itemRemoved(
