@@ -54,7 +54,7 @@ export class DynamicWidgets2Component implements OnInit {
     this.options = {
       gridType: GridType.VerticalFixed,
       compactType: CompactType.CompactUp,
-      minCols: 0,
+      minCols: 1,
       minRows: 0,
       maxCols: 1,
       maxRows: 10000000,
