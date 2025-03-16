@@ -26,6 +26,7 @@ import { MarkdownModule } from 'ngx-markdown';
   >
     <mat-icon>delete</mat-icon>
   </button>
+  <div class="resize-test"> 200px height </div>
 </div> ` ,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

@@ -91,3 +91,8 @@ app-widget-b, app-widget-b2 {
 app-widget-c, app-widget-c2 {
   background: lawngreen;
 }
+
+resize-test {
+  height: 200px;
+  min-height: 400px;
+}

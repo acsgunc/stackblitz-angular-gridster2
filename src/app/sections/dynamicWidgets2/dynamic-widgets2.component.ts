@@ -89,7 +89,7 @@ export class DynamicWidgets2Component implements OnInit {
   }
 
   addItem(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
+   // DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetA2Component, type: 'widgetA'  });
   }
 
   addWidgetA(): void {
@@ -97,11 +97,11 @@ export class DynamicWidgets2Component implements OnInit {
   }
 
   addWidgetB(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetB2Component, type: 'widgetB'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 15, component:WidgetB2Component, type: 'widgetB'  });
   }
 
   addWidgetC(): void {
-    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 10, component:WidgetC2Component, type: 'widgetC'  });
+    DynamicWidgets2Component.dashboard.push({ x: 0, y: 0, cols: 1, rows: 20, component:WidgetC2Component, type: 'widgetC'  });
   }
 
 
